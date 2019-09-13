@@ -7,17 +7,19 @@ output: github_document
 
 I'm an R Markdown document! 
 
-# Section 1
+# problem 1--datafram
 
-Here's a **code chunk** that samples from 
-a _normal distribution_:
 
 ```{r}
-samp = rnorm(100)
-length(samp)
+library(tidyverse)
+example_df = tibble(
+  sample = rnorm(8),
+  vec_logical = sample > 0,
+  vec_char = c ("A", "B", "C", "D","E", "F", "G", "H"),
+  vec_factor = c ("AB", "B", "O", "B","B", "O", "AB", "B")
+  )
 ```
 
 # Section 2
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+

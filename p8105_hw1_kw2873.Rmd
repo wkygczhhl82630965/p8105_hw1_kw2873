@@ -15,9 +15,11 @@ library(tidyverse)
 example_df = tibble(
   sample = rnorm(8),
   vec_logical = sample > 0,
-  vec_char = c ("A", "B", "C", "D","E", "F", "G", "H"),
-  vec_factor = c ("AB", "B", "O", "B","B", "O", "AB", "B")
+  vec_char = c("A", "B", "C", "D","E", "F", "G", "H"),
+  vec_factor = c("AB", "B", "O", "B","B", "O", "AB", "B")
   )
+example_df
+
 ```
 
 # Section 2

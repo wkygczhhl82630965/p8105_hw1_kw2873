@@ -7,21 +7,48 @@ output: github_document
 
 I'm an R Markdown document! 
 
-# problem 1--datafram
+# problem 1: datafram
 
 
 ```{r}
+
+  s = rnorm(8)
+  v_logi = s > 0
+  v_ch = c("A", "B", "C", "D","E", "F", "G", "H")
+  v_fa = c("AB", "B", "O", "B","B", "O", "AB", "B")
+  
 library(tidyverse)
 example_df = tibble(
-  sample = rnorm(8),
-  vec_logical = sample > 0,
-  vec_char = c("A", "B", "C", "D","E", "F", "G", "H"),
-  vec_factor = c("AB", "B", "O", "B","B", "O", "AB", "B")
+  samp = s,
+  vec_logical = v_logi,
+  vec_char = v_ch,
+  vec_factor = v_fa
   )
+### out put of the example_data fram
 example_df
+### take the mean of each variables
+mean(s)
+mean(v_logi)
+mean(v_ch)
+mean(v_fa)
+```
+the mean of my sample is `r mean(s)`
+
+the mean of my logical vector is `r mean(v_logi)`
+
+the mean of my character vector is `r mean(v_ch)`
+
+the mean of my factor vector is `r mean(v_fa)`
+
+**we noticed that both character vector and factor vector
+do not have mean**
+
+```{r}
 
 ```
 
-# Section 2
+
+
+
 
 

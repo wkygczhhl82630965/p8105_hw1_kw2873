@@ -83,10 +83,10 @@ And the proportion for cases for which x+y>1 is 25.2%
 
 # problem 2 continued with making plots
 ```{r}
-ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point()
-ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point()
-ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point()
-
+plot_1 = ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point()
+plot_2 = ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point()
+plot_3 = ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point()
+ggsave("scatterplot1.png", plot=plot_1)
 ```
 
 

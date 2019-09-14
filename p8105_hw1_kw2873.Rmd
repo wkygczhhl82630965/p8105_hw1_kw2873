@@ -79,7 +79,16 @@ In this dataplot, the number of rows is `r nrow(plot_df)`
 the number of colon is `r ncol(plot_df)` 
 the mean, meadian, and standard deviation of x are
 `r mean(x)`, `r median(x)`, `r var(x)` respectively.
-And the proportion for cases for which x+y>1 is 126/500 
+And the proportion for cases for which x+y>1 is 25.2% 
+
+# problem 2 continued with making plots
+```{r}
+ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point()
+ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point()
+ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point()
+
+```
+
 
 
 

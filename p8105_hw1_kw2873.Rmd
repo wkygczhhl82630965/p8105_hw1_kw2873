@@ -47,8 +47,7 @@ the mean of my character vector is `r mean(v_ch)`
 the mean of my factor vector is `r mean(v_fac)`
 
 **we noticed that the mean of both character  and factor vector
-doesn't exist. However, when I used the as.numeric function to 
-convert the non-numeric ve **
+doesn't exist. Both logical and factor vector can be converted into numeric vector using as.numeric function, yet, character vector failed to do so. **
 
 
 # problem 1 continued 

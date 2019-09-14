@@ -11,18 +11,19 @@ I'm an R Markdown document!
 
 
 ```{r}
-
+  set.seed(12)
   s = rnorm(8)
   v_logi = s > 0
   v_ch = c("A", "B", "C", "D","E", "F", "G", "H")
-  v_fa = c("AB", "B", "O", "B","B", "O", "AB", "B")
+  v_fac = factor(c("AB", "B", "O", "B","B", "O", "AB", "B"),
+                 levels = c('AB','B','O'))
   
 library(tidyverse)
 example_df = tibble(
   samp = s,
   vec_logical = v_logi,
   vec_char = v_ch,
-  vec_factor = v_fa
+  vec_factor = v_fac
   )
 ### out put of the example_data fram
 example_df
@@ -30,7 +31,12 @@ example_df
 mean(s)
 mean(v_logi)
 mean(v_ch)
-mean(v_fa)
+mean(v_fac)
+### using the as.numeric function
+
+as.numeric(v_logi)
+as.numeric(v_ch)
+as.numeric(v_fac)
 ```
 the mean of my sample is `r mean(s)`
 
@@ -38,17 +44,42 @@ the mean of my logical vector is `r mean(v_logi)`
 
 the mean of my character vector is `r mean(v_ch)`
 
-the mean of my factor vector is `r mean(v_fa)`
+the mean of my factor vector is `r mean(v_fac)`
 
-**we noticed that both character vector and factor vector
-do not have mean**
+**we noticed that the mean of both character  and factor vector
+doesn't exist. However, when I used the as.numeric function to 
+convert the non-numeric ve **
 
+
+# problem 1 continued 
 ```{r}
-
+new_logi1 = as.numeric(v_logi)
+new_logi2 = as.factor(v_logi)
+result1 = new_logi1*s
+result2 = new_logi2*s
+new_logi3 = as.numeric(new_logi2)
+result3 = new_logi3*s
 ```
 
-
-
+# problem 2
+```{r}
+set.seed(1)
+x = rnorm(500)
+library(tidyverse)
+plot_df = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  v_logi = x + y > 1,
+  v_num = as.numeric(v_logi),
+  v_fac = as.factor(v_num),
+)
+summary(plot_df)
+```
+In this dataplot, the number of rows is `r nrow(plot_df)`
+the number of colon is `r ncol(plot_df)` 
+the mean, meadian, and standard deviation of x are
+`r mean(x)`, `r median(x)`, `r var(x)` respectively.
+And the proportion for cases for which x+y>1 is 126/500 
 
 
 

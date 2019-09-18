@@ -9,49 +9,41 @@ I'm an R Markdown document!
 
 # problem 1: datafram
 
+```{r include=FALSE }
+library(tidyverse)
+```
 
 ```{r}
-  set.seed(12)
+
+  set.seed(12) 
   s = rnorm(8)
   v_logi = s > 0
-  v_ch = c("A", "B", "C", "D","E", "F", "G", "H")
+  v_ch = c("yellow", "blue", "green", "red","black", "white", "gray", "purple")
   v_fac = factor(c("AB", "B", "O", "B","B", "O", "AB", "B"),
                  levels = c('AB','B','O'))
-  
-library(tidyverse)
-example_df = tibble(
+  example_df = tibble(
   samp = s,
   vec_logical = v_logi,
   vec_char = v_ch,
   vec_factor = v_fac
   )
-### out put of the example_data fram
-example_df
-### take the mean of each variables
-mean(s)
-mean(v_logi)
-mean(v_ch)
-mean(v_fac)
 ### using the as.numeric function
-
-as.numeric(v_logi)
-as.numeric(v_ch)
-as.numeric(v_fac)
+numeric_logi = as.numeric(v_logi)
+numeric_ch = as.numeric(v_ch)
+numeric_fac = as.numeric(v_fac)
 ```
-the mean of my sample is `r mean(s)`
+Both logic vector and factor vector can be transformed into numeric vector but factor vector failed to do so. 
+For logic vecor, R recognize True as 1 , False as 0. Therefore, when we use the as.numeric function, R can easily 
+take True as 1 and False as 0. Smilarly,factor vector has level which can be recognized by R as 1,2,3 and so on. 
+Therefore, as.numeric fucntion can be applied here sucessfully. However, R can not recognize character vector as numeric factor.
 
-the mean of my logical vector is `r mean(v_logi)`
+When it comes to taking the  mean of these vectors: the mean of my sample is `r mean(s)`. the mean of my logical vector is `r mean(v_logi)`, the mean of my character vector is `r mean(v_ch)` and the mean of my character vector is `r mean(v_ch)`.
+As mentioned before, since R take True and False as 1 and 0, we can take the mean of logical vector. 
+Since R can not recognize factor and charactor as numeric vectors, we can not take mean from it. 
 
-the mean of my character vector is `r mean(v_ch)`
-
-the mean of my factor vector is `r mean(v_fac)`
-
-**we noticed that the mean of both character  and factor vector
-doesn't exist. Both logical and factor vector can be converted into numeric vector using as.numeric function, yet, character vector failed to do so. **
-
-
-# problem 1 continued 
+# **problem 1 continued**
 ```{r}
+### vector convertion using as.numeric function
 new_logi1 = as.numeric(v_logi)
 new_logi2 = as.factor(v_logi)
 result1 = new_logi1*s
@@ -62,6 +54,7 @@ result3 = new_logi3*s
 
 # problem 2
 ```{r}
+### creating dataframe for making boxplot
 set.seed(1)
 x = rnorm(500)
 library(tidyverse)
@@ -72,21 +65,23 @@ plot_df = tibble(
   v_num = as.numeric(v_logi),
   v_fac = as.factor(v_num),
 )
-summary(plot_df)
+new_logi = pull(plot_df,v_logi) ### pulling out the data from dataframe in order to 
+                                ### calculate for the proportion                                          
 ```
 In this dataplot, the number of rows is `r nrow(plot_df)`
 the number of colon is `r ncol(plot_df)` 
 the mean, meadian, and standard deviation of x are
 `r mean(x)`, `r median(x)`, `r var(x)` respectively.
-And the proportion for cases for which x+y>1 is 25.2% 
+And the proportion for cases for which x+y>1 is  `r sum(new_logi)`/ `r length(x)`
 
 # problem 2 continued with making plots
 ```{r}
-plot_1 = ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point()
-plot_2 = ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point()
-plot_3 = ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point()
-ggsave("scatterplot1.png", plot=plot_1)
-```
+ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point() 
+ggsave("scatterplot1.png")
+ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point()
+ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point()
+ 
+
 
 
 

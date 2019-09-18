@@ -80,7 +80,10 @@ ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point()
 ggsave("scatterplot1.png")
 ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point()
 ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point()
- 
+```
+All the three scatterplot show the relationship beteen x and y. Since both x and y are random variables 
+gathered from normal distribution, there is no relationship between x and y. Also we noticed that there are more value combinations (the sum of x and y) are smaller than 1 (anotated by  False), which is not unexpected as I mentioned that both variable  x and y are drawn randomly from a normal distribution with mean of 0 and standard deviation of 1. For scatterplot 2 and 3, I should expect to see the same results in plot 1 as changing the type of vector using the as.numeric or as.factor function won't affect the results.   
+
 
 
 

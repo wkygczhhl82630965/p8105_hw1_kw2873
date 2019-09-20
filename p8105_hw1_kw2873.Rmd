@@ -76,10 +76,20 @@ And the proportion for cases for which x+y>1 is  `r sum(new_logi)`/ `r length(x)
 
 # problem 2 continued with making plots
 ```{r}
-ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point() 
+ggplot(plot_df, aes(x = x, y = y, color = v_logi)) + geom_point() + 
+  labs(title = "Scatterplot of the Relationship Between X and Y ",
+       x = "Range of X ",
+       y = "Range of Y")
 ggsave("scatterplot1.png")
-ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point()
-ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point()
+
+ggplot(plot_df, aes(x = x, y = y, color = v_num)) + geom_point() +
+  labs(title = "Scatterplot of the Relationship Between X and Y ",
+       x = "Range of X ",
+       y = "Range of Y" )
+ggplot(plot_df, aes(x = x, y = y, color = v_fac)) + geom_point() + 
+  labs(title = "Scatterplot of the Relationship Between X and Y ",
+        x = "Range of X ",
+       y = "Range of Y")
 ```
 
 All the three scatterplot show the relationship beteen x and y. Since both x and y are random variables 

@@ -14,7 +14,7 @@ library(tidyverse)
 ```
 
 ```{r}
-
+### creating the dataframe using tibble
   set.seed(12) 
   s = rnorm(8)
   v_logi = s > 0
